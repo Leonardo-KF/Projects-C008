@@ -9,8 +9,8 @@ function valdados(v1){
     } else {
       console.log('=================================================');
       console.log('Opção inválida! Por favor, tente novamente!');
-      console.log('Não fique nervoso!')
-      v1 = String(prompt('Digite a sua resposta novamente [S/N]: ')).toUpperCase()
+      console.log('Não fique nervoso!');
+      v1 = String(prompt('Digite a sua resposta novamente [S/N]: ')).toUpperCase();
     };
   };
 };
