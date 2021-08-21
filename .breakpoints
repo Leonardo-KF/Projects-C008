@@ -1,0 +1,46 @@
+{
+  "files": {
+    "exer002.js": [
+      {
+        "id": "a925a1da-22b0-4d9d-8f98-e0758ad2d3d8",
+        "line": 1,
+        "version": 56,
+        "index": 0
+      }
+    ],
+    "exer003.js": [
+      {
+        "id": "7aa38d56-b4a3-46f1-bb88-93dd87b49ea4",
+        "line": 1,
+        "version": 4,
+        "index": 31
+      },
+      {
+        "id": "f89ccd3e-756f-4be9-b94e-ffb7242cc864",
+        "line": 14,
+        "version": 4,
+        "index": 289
+      }
+    ],
+    "index.js": [
+      {
+        "id": "5d5da9d3-8088-459d-8e29-07f902a67d92",
+        "line": 19,
+        "version": 5757,
+        "index": 483
+      },
+      {
+        "id": "b5ede5d2-eced-43e2-b8e3-d5b98b7e4a3b",
+        "line": 30,
+        "version": 5757,
+        "index": 1350
+      },
+      {
+        "id": "faab8087-348b-4673-8d6c-df83c10b19b8",
+        "line": 42,
+        "version": 5656,
+        "index": 1745
+      }
+    ]
+  }
+}
