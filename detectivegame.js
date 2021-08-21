@@ -16,7 +16,7 @@ function valdados(v1){
 };
 
 console.log('Jogo do Detetive!');
-console.log('Iremos fazer algumas perguntas para verificar seu envolvimento no caso de assassinato!')
+console.log('Iremos fazer algumas perguntas para verificar seu envolvimento no caso de assassinato!');
 console.log('=================================================');
 let p1 = valdados(String(prompt('Você ligou para a vítima [S/N]? ')).toUpperCase()); 
 console.log('=================================================');
