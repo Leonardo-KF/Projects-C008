@@ -1,4 +1,6 @@
 function valdados(v1){
+  // o parametro v1 vai validar o input do usuario como S ou N, caso o input do usuario seja qualquer outra informação
+  // o programa não irá deixar o usuario avançar
   while (true){
     if (v1[0] == 'S' || v1[0] == 'N'){
       if (v1[0]=='S'){
