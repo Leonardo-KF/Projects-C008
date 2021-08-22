@@ -34,7 +34,7 @@ let res = (p1 + p2 + p3 + p4 + p5);
 let cond = '';
 if (res === 2){
   cond = 'Suspeito(a)!';
-}else if(res == 4 || res == 3){
+}else if(res === 4 || res === 3){
   cond = 'Cúmplice!';
 }else if (res > 4){
   cond = 'ASSASSINO!!!';
