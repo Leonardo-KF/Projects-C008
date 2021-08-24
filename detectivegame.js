@@ -1,4 +1,3 @@
-const prompt = require('prompt-sync')();
 function valdados(v1, ind){
     // o parametro v1 vai validar o input do usuario como S ou N, caso o input do usuario seja qualquer outra informação
     // o programa não irá deixar o usuario avançar
