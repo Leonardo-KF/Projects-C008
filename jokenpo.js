@@ -63,12 +63,17 @@ while (true) {
   }
   console.log("=========================================================");
   console.log(`Foram jogadas ${rounds} rodadas e houveram ${tie} empates!`);
-  if (winacc > rounds - tie - winacc) {
+  if (winacc > (rounds - tie - winacc)) {
     console.log(`Você foi o grande campeão com ${winacc} vitórias!`);
+    console.log(`E o computador ganhou ${rounds -tie -winacc} rodadas!`)
+  } else if (winacc == (rounds -tie -winacc)){
+    console.log(`Você ganhou ${winacc} vezes, e o computador ganhou ${rounds -tie -winacc} vezes!`);
+    console.log('Então temos um EMPATE');
   } else {
     console.log(
       `O computador foi o grande campeão com ${rounds - tie - winacc} vitórias!`
     );
+    console.log(`E você ganhou ${winacc} rodadas!`)
   }
   console.log("=========================================================");
   while (true) {
@@ -83,6 +88,7 @@ while (true) {
   }
   totj++;
   if (conti[0] == "N") {
+    console.log('Finalizando...');
     break; // condição de parada do game
   }
 }
