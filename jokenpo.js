@@ -92,7 +92,7 @@ if (totw > totl) {
 } else if (totw == totl) {
   ganhador = "Houve um empate";
 } else {
-  ganhador = `Você venceu ${totl} rodadas em ${totj} jogos!`;
+  ganhador = `O computador venceu ${totl} rodadas em ${totj} jogos!`;
 }
 console.log(
   `Jogamos ${totj} vezes no total!\nAnalisando todos os jogos e todas as rodadas, concluimos que...\n${ganhador}!`
