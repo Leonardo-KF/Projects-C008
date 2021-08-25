@@ -36,6 +36,7 @@ while (true) {
     let comp = parseInt(Math.random() * (3 - 0));
     console.log("=========================================================");
     console.log(' -> Você pode escolher "Pedra", "Papel" ou "Tesoura"!');
+    console.log("=========================================================");
     let user = valinput(String(prompt("Digite a sua escolha: ")).toUpperCase());
     if (comp == user) {
       tie++;
