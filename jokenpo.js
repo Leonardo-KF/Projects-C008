@@ -88,11 +88,11 @@ while (true) {
 }
 let ganhador = "";
 if (totw > totl) {
-  ganhador = `Você ganhou com ${totw} vitórias em ${totj} de jogos`;
+  ganhador = `Você venceu ${totw} rodadas em ${totj} jogos`;
 } else if (totw == totl) {
   ganhador = "Houve um empate";
 } else {
-  ganhador = `O computador ganhou com ${totl} vitórias em ${totj} jogos!`;
+  ganhador = `Você venceu ${totl} rodadas em ${totj} jogos!`;
 }
 console.log(
   `Jogamos ${totj} vezes no total!\nAnalisando todos os jogos e todas as rodadas, concluimos que...\n${ganhador}!`
