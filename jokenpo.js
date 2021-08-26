@@ -62,18 +62,18 @@ while (true) {
     c += 1;
   }
   console.log("=========================================================");
-  console.log(`Foram jogadas ${rounds} rodadas e houveram ${tie} empates!`);
+  console.log(`Foram jogadas ${rounds} rodada(s) e houveram ${tie} empate(s)!`);
   if (winacc > (rounds - tie - winacc)) {
-    console.log(`Você foi o grande campeão com ${winacc} vitórias!`);
-    console.log(`E o computador ganhou ${rounds -tie -winacc} rodadas!`)
+    console.log(`Você foi o grande campeão com ${winacc} vitória(s)!`);
+    console.log(`E o computador ganhou somente ${rounds -tie -winacc} rodada(s)!`)
   } else if (winacc == (rounds -tie -winacc)){
-    console.log(`Você ganhou ${winacc} vezes, e o computador ganhou ${rounds -tie -winacc} vezes!`);
+    console.log(`Você ganhou ${winacc} veze(s), e o computador ganhou ${rounds -tie -winacc} veze(s)!`);
     console.log('Então temos um EMPATE');
   } else {
     console.log(
-      `O computador foi o grande campeão com ${rounds - tie - winacc} vitórias!`
+      `O computador foi o grande campeão com ${rounds - tie - winacc} vitória(s)!`
     );
-    console.log(`E você ganhou ${winacc} rodadas!`)
+    console.log(`E você ganhou somente ${winacc} rodada(s)!`)
   }
   console.log("=========================================================");
   while (true) {
@@ -94,12 +94,12 @@ while (true) {
 }
 let ganhador = "";
 if (totw > totl) {
-  ganhador = `Você venceu ${totw} rodadas em ${totj} jogos`;
+  ganhador = `Você venceu ${totw} rodada(s) em ${totj} jogo(s)`;
 } else if (totw == totl) {
   ganhador = "Houve um empate";
 } else {
-  ganhador = `O computador venceu ${totl} rodadas em ${totj} jogos!`;
+  ganhador = `O computador venceu ${totl} rodada(s) em ${totj} jogo(s)!`;
 }
 console.log(
-  `Jogamos ${totj} vezes no total!\nAnalisando todos os jogos e todas as rodadas, concluimos que...\n${ganhador}!`
+  `Jogamos ${totj} vez(es) no total!\nAnalisando todo(s) os jogo(s) e todas as rodadas, concluimos que...\n${ganhador}!`
 );
