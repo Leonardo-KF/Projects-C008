@@ -65,7 +65,7 @@ while (true) {
   console.log(`Foram jogadas ${rounds} rodada(s) e houveram ${tie} empate(s)!`);
   if (winacc > (rounds - tie - winacc)) {
     console.log(`Você foi o grande campeão com ${winacc} vitória(s)!`);
-    console.log(`E o computador ganhou somente ${rounds -tie -winacc} rodada(s)!`)
+    console.log(`E o computador ganhou somente ${rounds -tie -winacc} rodada(s)!`);
   } else if (winacc == (rounds -tie -winacc)){
     console.log(`Você ganhou ${winacc} veze(s), e o computador ganhou ${rounds -tie -winacc} veze(s)!`);
     console.log('Então temos um EMPATE');
@@ -73,7 +73,7 @@ while (true) {
     console.log(
       `O computador foi o grande campeão com ${rounds - tie - winacc} vitória(s)!`
     );
-    console.log(`E você ganhou somente ${winacc} rodada(s)!`)
+    console.log(`E você ganhou somente ${winacc} rodada(s)!`);
   }
   console.log("=========================================================");
   while (true) {
