@@ -38,10 +38,12 @@ let empataram = '';
 let ganhador = '';
 for (let c = 0; c < rodadas; c++) { 
     let maior = 0;
+    let vitorias = 0;
     for (v of jogadores) {
         if (v.resultados[c] > maior){
             maior = v.resultados[c];
             ganhador = v.nome;
+            vitorias = v.vitorias + 1;
         }
     }
     var cont = 0
@@ -57,4 +59,11 @@ for (let c = 0; c < rodadas; c++) {
         continue;
     }
     console.log(`O ${ganhador} ganhou a ${c+1}ª rodada, tirando o valor: ${maior} no dado!`);
+}
+var points = 0
+for (v of jogadores){
+    if (v.vitorias > points){
+        points = v.vitorias;
+        var campeao = v.nome;
+    }
 }
