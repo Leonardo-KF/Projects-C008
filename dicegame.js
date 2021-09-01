@@ -1,9 +1,5 @@
 const prompt = require("prompt-sync")();
-function rollDice(){
-    return (Math.floor(Math.random() * 6) + 1);
-}
-
-let jogadores = [];
+var jogadores = [];
 console.log('=====================');
 console.log('----- DICE GAME -----');
 console.log('=====================');
@@ -24,46 +20,25 @@ while (true) {
     }
 }
 for (let i = 0; i < pessoas; i++) {
-    jogadores[i] = { id: 'Jogador ' + (i+1), nome: '',resultados: []}
-    console.log('=====================================')
-    jogadores[i].nome = String(prompt(`Digite o nome do ${i + 1}º jogador: `));
-    for (let c = 0; c < rodadas; c++) {
-        jogadores[i].resultados.push(rollDice());
-        console.log(`${c+1}ª Rodada!`)
-        console.log(jogadores[i].resultados[c]);
-    }
-    console.log('=====================================');
-} 
-let empataram = '';
-let ganhador = '';
-for (let c = 0; c < rodadas; c++) { 
-    let maior = 0;
-    let vitorias = 0;
-    for (v of jogadores) {
-        if (v.resultados[c] > maior){
-            maior = v.resultados[c];
-            ganhador = v.nome;
-            vitorias = v.vitorias + 1;
+    jogadores.push( {id: 'Jogador '+ (i + 1), name: '', resultados: [], vitorias: 0});
+    while (true) {
+        jogadores[i].name = String(prompt(`Digite o nome do ${i + 1}º jogador: `));
+        if (isNaN(jogadores[i].name)) {
+            break;
+        } else {
+            console.log('Opção inválida. Por favor digite o seu primeiro nome!');
         }
     }
-    var cont = 0
-    for (v of jogadores){
-        if (v.resultados[c] == maior) {
-            cont++;
-            if (cont >= 2)    
-                empataram += `${v.nome},`;
-        }
-    }
-    if (cont >= 2) {
-        console.log(`Houve um empate entre ${ganhador} e ${empataram} ambos tiraram o valor: ${maior} no dado. `);
-        continue;
-    }
-    console.log(`O ${ganhador} ganhou a ${c+1}ª rodada, tirando o valor: ${maior} no dado!`);
 }
-var points = 0
-for (v of jogadores){
-    if (v.vitorias > points){
-        points = v.vitorias;
-        var campeao = v.nome;
+for (let c = 0; c < pessoas; c++) {  // laço que define a posição do jogador
+    for (let i = 0; i < rodadas; i++) {
+        jogadores[c].resultados.push(Math.floor(Math.random() * 7));
+    }
+}
+for (let r = 0; r < rodadas; r++) { 
+jogadores.sort(function(a, b) { return a.resultados[r] - b.resultados[r]}).reverse();
+    console.log(`Na ${r + 1}ª rodada:`);
+    for (let j = 0; j < pessoas; j++) {
+        console.log(`${j + 1}ª posição: ${jogadores[j].name} com o valor: ${jogadores[j].resultados[r]}`);
     }
 }
