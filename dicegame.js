@@ -39,6 +39,7 @@ for (let r = 0; r < rodadas; r++) {
 jogadores.sort(function(a, b) { return a.resultados[r] - b.resultados[r]}).reverse();
     console.log(`Na ${r + 1}ª rodada:`);
     for (let j = 0; j < pessoas; j++) {
+        if (jogadores[i].resultados[r] == jogadores)
         console.log(`${j + 1}ª posição: ${jogadores[j].name} com o valor: ${jogadores[j].resultados[r]}`);
     }
 }
