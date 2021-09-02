@@ -1,45 +1,68 @@
 const prompt = require("prompt-sync")();
-var jogadores = [];
-console.log('=====================');
-console.log('----- DICE GAME -----');
-console.log('=====================');
-while (true) {
-    var rodadas = parseInt(prompt('Digite o numero de rodadas que deseja jogar: '));
-    if (rodadas % 1 == 0) {
-        break;
+console.log("=====================");
+console.log("----- DICE GAME -----");
+console.log("=====================");
+let jogadores = [];
+
+function valInt(n1) {
+  while (true) {
+    if (n1 % 1 == 0) {
+      return n1;
     } else {
-        console.log('Opção inválida! Por favor tente novamente.');
+      n1 = parseInt(prompt("Opção invalida! Por favor digite novamente: "));
     }
+  }
 }
-while (true) {
-    var pessoas = parseInt(prompt('Digite o numero de jogadores: '));
-    if (pessoas % 1 == 0) {
-        break;
+
+let rounds = valInt(
+  parseInt(prompt("Digite o numero de rodadas que deseja jogar: "))
+);
+let players = valInt(parseInt(prompt("Digite o numero de jogadores: ")));
+for (let c = 0; c < players; c++) {
+  let jogador = {};
+  while (true) {
+    jogador.name = String(prompt(`Digite o nome do jogador ${c + 1}: `));
+    if (isNaN(jogador.name)) {
+      break;
     } else {
-        console.log('Opção inválida! Por favor tente novamente.');
+      console.log("Nome ínvalido! Por favor digite seu nome novamente.");
     }
+  }
+  jogador.resultados = [];
+  jogador.wins = 0;
+  jogadores.push(jogador);
 }
-for (let i = 0; i < pessoas; i++) {
-    jogadores.push( {id: 'Jogador '+ (i + 1), name: '', resultados: [], vitorias: 0});
-    while (true) {
-        jogadores[i].name = String(prompt(`Digite o nome do ${i + 1}º jogador: `));
-        if (isNaN(jogadores[i].name)) {
-            break;
-        } else {
-            console.log('Opção inválida. Por favor digite o seu primeiro nome!');
-        }
+for (let n in jogadores) {
+  for (let i = 0; i < rounds; i++) {
+    jogadores[n].resultados.push(Math.floor(Math.random() * 7));
+  }
+}
+
+for (let i = 0; i < rounds; i++) {
+  jogadores
+    .sort(function (a, b) {
+      return a.resultados[i] - b.resultados[i];
+    })
+    .reverse();
+  console.log(`${i + 1}ª Rodada!`);
+  for (let p = 0; p < jogadores.length; p++) {
+    if (jogadores[0].resultados[i] == jogadores[1].resultados[i]) {
+      console.log(
+        `${p + 1}ª Posição: ${jogadores[0].name} e ${
+          jogadores[1].name
+        } empataram, ambos tiraram o valor: ${jogadores[0].resultados[i]}`
+      );
+      jogadores[1].wins += 1;
+      jogadores[0].wins += 1;
+      continue;
+    } else {
+      console.log(
+        `${p + 1}ª Posição: ${jogadores[p].name}, tirou o valor ${
+          jogadores[p].resultados[i]
+        }`
+      );
+      jogadores[0].wins += 1;
     }
+  }
 }
-for (let c = 0; c < pessoas; c++) {  // laço que define a posição do jogador
-    for (let i = 0; i < rodadas; i++) {
-        jogadores[c].resultados.push(Math.floor(Math.random() * 7));
-    }
-}
-for (let r = 0; r < rodadas; r++) { 
-jogadores.sort(function(a, b) { return a.resultados[r] - b.resultados[r]}).reverse();
-    console.log(`Na ${r + 1}ª rodada:`);
-    for (let j = 0; j < pessoas; j++) {
-        if (jogadores[i].resultados[r] == jogadores)
-        console.log(`${j + 1}ª posição: ${jogadores[j].name} com o valor: ${jogadores[j].resultados[r]}`);
-    }
-}
+console.log(jogadores);
