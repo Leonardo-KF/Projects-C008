@@ -14,7 +14,7 @@ let winner = ""; // variavel que receberá o vencedor
 function autorizaVoto(anodenasc) {
   while (true) {
     // validação ano de nascimento
-    if (anodenasc % 1 == 0 || now.getFullYear() - anodenasc < 122) {
+    if (anodenasc % 1 == 0 && now.getFullYear() - anodenasc < 122) {
       break;
     } else {
       console.log(
