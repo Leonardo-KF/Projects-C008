@@ -1,12 +1,14 @@
 const prompt = require("prompt-sync")();
 now = new Date();
 let tf = 0;
-let vtc1 = 0,
-  vtc2 = 0,
-  vtc3 = 0,
-  vnul = 0,
-  veb = 0,
-  vwin = 0;
+let votes = {
+  vtc1: 0,
+  vtc2: 0,
+  vtc3: 0,
+  vtnull: 0,
+  veb: 0,
+  vwin: 0,
+};
 let winner = "";
 function autorizaVoto(anodenasc) {
   while (true) {
@@ -67,31 +69,37 @@ function votacao(aut, voto) {
       }
     }
   } else {
-    console.log("=============================");
-    console.log("Você não pode votar!");
-    console.log("=============================");
+    console.log(
+      "================================================================"
+    );
+    console.log(
+      "Você não pode votar! Seu voto não será contabilizado no sistema!"
+    );
+    console.log(
+      "================================================================"
+    );
   }
 }
 
 function exibirRes() {
   console.log("=============================");
   console.log(
-    `O Candidato 1 teve ${vtc1} votos!\nO Candidato 2 teve ${vtc2} votos!\nO Candidato 3 teve ${vtc3} votos!`
+    `O Candidato 1 teve ${votes.vtc1} votos!\nO Candidato 2 teve ${votes.vtc2} votos!\nO Candidato 3 teve ${votes.vtc3} votos!`
   );
-  console.log(`O total de votos nulos foi: ${vnul} votos!`);
-  console.log(`O total de votos em branco foi: ${veb} votos!`);
-  if (vtc1 > vwin) {
-    // não esta funcionando a ordenação do campeão, criar uma lista e laço de repetição.
-    vwin = vtc1;
+  console.log(`O total de votos nulos foi: ${votes.vtnull} votos!`);
+  console.log(`O total de votos em branco foi: ${votes.veb} votos!`);
+  if (votes.vtc1 > votes.vwin) {
+    votes.vwin = votes.vtc1;
     winner = "Candidato 1";
-  } else if (vtc2 > vwin) {
-    vwin = vtc2;
+  } else if (votes.vtc2 > votes.vwin) {
+    votes.vwin = votes.vtc2;
     winner = "Candidato 2";
-  } else if (vtc3 > vwin) {
-    vwin = vtc3;
+  } else if (votes.vtc3 > votes.vwin) {
+    votes.vwin = votes.vtc3;
     winner = "Candidato 3";
   }
-  console.log(`O vencedor da votação foi: ${winner} com ${vwin} votos!`);
+  console.log("=============================================================");
+  console.log(`O vencedor da votação foi: ${winner} com ${votes.vwin} votos!`);
 }
 while (true) {
   console.log("=============================");
@@ -109,15 +117,15 @@ while (true) {
   console.log("=============================");
   var vote = votacao(condition, prompt("Digite o seu voto: "));
   if (vote == 1) {
-    vtc1++;
+    votes.vtc1++;
   } else if (vote == 2) {
-    vtc2++;
+    votes.vtc2++;
   } else if (vote == 3) {
-    vtc3++;
+    votes.vtc3++;
   } else if (vote == 4) {
-    vnul++;
+    votes.vtnull++;
   } else if (vote == 5) {
-    veb++;
+    votes.veb++;
   }
   console.log("=============================");
   while (true) {
