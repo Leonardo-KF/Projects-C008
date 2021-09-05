@@ -2,6 +2,7 @@ const prompt = require("prompt-sync")();
 now = new Date();
 let tf = 0;
 let votes = {
+  // objeto contabilizador de votos
   vtc1: 0,
   vtc2: 0,
   vtc3: 0,
@@ -9,9 +10,10 @@ let votes = {
   veb: 0,
   vwin: 0,
 };
-let winner = "";
+let winner = ""; // variavel que receberá o vencedor
 function autorizaVoto(anodenasc) {
   while (true) {
+    // validação ano de nascimento
     if (anodenasc % 1 == 0 || now.getFullYear() - anodenasc < 122) {
       break;
     } else {
@@ -38,10 +40,13 @@ function autorizaVoto(anodenasc) {
   }
 }
 function votacao(aut, voto) {
+  // função que vão utilizar
   if (aut == "obrigatório" || aut == "opcional") {
     while (true) {
+      // validação da opção de voto
       if (voto % 1 == 0) {
         while (true) {
+          // confirma votação
           var conf = String(
             prompt(
               `Você escolheu a opção [${voto}]! Deseja confirmar esse voto [S/N]? `
@@ -56,6 +61,7 @@ function votacao(aut, voto) {
           }
         }
         if (voto >= 1 && voto <= 5) {
+          // validação da escolha das opções
           return voto;
         } else {
           console.log(
@@ -82,6 +88,7 @@ function votacao(aut, voto) {
 }
 
 function exibirRes() {
+  // função que exibe o resultado final da votação
   console.log("=============================");
   console.log(
     `O Candidato 1 teve ${votes.vtc1} votos!\nO Candidato 2 teve ${votes.vtc2} votos!\nO Candidato 3 teve ${votes.vtc3} votos!`
