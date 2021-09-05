@@ -1,0 +1,140 @@
+const prompt = require("prompt-sync")();
+now = new Date();
+let tf = 0;
+let vtc1 = 0,
+  vtc2 = 0,
+  vtc3 = 0,
+  vnul = 0,
+  veb = 0,
+  vwin = 0;
+let winner = "";
+function autorizaVoto(anodenasc) {
+  while (true) {
+    if (anodenasc % 1 == 0 || now.getFullYear() - anodenasc < 122) {
+      break;
+    } else {
+      console.log(
+        "===================================================================================================="
+      );
+      console.log(
+        "Você está tentando usar dados falsos! Que segundo o artigo 307 do Código Penal é considerado crime de falsa identidade!"
+      );
+      console.log("E devido a essas circunstâncias seu voto será negado!");
+      console.log(
+        "===================================================================================================="
+      );
+      tf++;
+      return "negado";
+    }
+  }
+  if (now.getFullYear() - anodenasc >= 18) {
+    return "obrigatório";
+  } else if (now.getFullYear() - anodenasc >= 16) {
+    return "opcional";
+  } else {
+    return "negado";
+  }
+}
+function votacao(aut, voto) {
+  if (aut == "obrigatório" || aut == "opcional") {
+    while (true) {
+      if (voto % 1 == 0) {
+        while (true) {
+          var conf = String(
+            prompt(
+              `Você escolheu a opção [${voto}]! Deseja confirmar esse voto [S/N]? `
+            )
+          ).toUpperCase();
+          if (conf[0] == "S" || conf[0] == "N") {
+            break;
+          }
+          if (conf[0] == "N") {
+            voto = parseInt(prompt("Digite novamente o seu voto: "));
+            continue;
+          }
+        }
+        if (voto >= 1 && voto <= 5) {
+          return voto;
+        } else {
+          console.log(
+            "Você escolheu uma opção inválida! Por favor digite uma opção válida."
+          );
+          voto = parseInt(prompt("Digite o seu voto: "));
+        }
+      } else {
+        console.log("Você digitou uma opção invalida! Tente novamente");
+        voto = parseInt(prompt("Digite o seu voto novamente: "));
+      }
+    }
+  } else {
+    console.log("=============================");
+    console.log("Você não pode votar!");
+    console.log("=============================");
+  }
+}
+
+function exibirRes() {
+  console.log("=============================");
+  console.log(
+    `O Candidato 1 teve ${vtc1} votos!\nO Candidato 2 teve ${vtc2} votos!\nO Candidato 3 teve ${vtc3} votos!`
+  );
+  console.log(`O total de votos nulos foi: ${vnul} votos!`);
+  console.log(`O total de votos em branco foi: ${veb} votos!`);
+  if (vtc1 > vwin) {
+    // não esta funcionando a ordenação do campeão, criar uma lista e laço de repetição.
+    vwin = vtc1;
+    winner = "Candidato 1";
+  } else if (vtc2 > vwin) {
+    vwin = vtc2;
+    winner = "Candidato 2";
+  } else if (vtc3 > vwin) {
+    vwin = vtc3;
+    winner = "Candidato 3";
+  }
+  console.log(`O vencedor da votação foi: ${winner} com ${vwin} votos!`);
+}
+while (true) {
+  console.log("=============================");
+  var condition = autorizaVoto(
+    parseInt(prompt("Digite o ano do seu nascimento: "))
+  );
+  console.log("=============================");
+  console.log("        Urna Tabajara        ");
+  console.log("=============================");
+  console.log("[1] - Canditato 1");
+  console.log("[2] - Canditado 2");
+  console.log("[3] - Canditado 3");
+  console.log("[4] - Voto Nulo");
+  console.log("[5] - Voto em Branco");
+  console.log("=============================");
+  var vote = votacao(condition, prompt("Digite o seu voto: "));
+  if (vote == 1) {
+    vtc1++;
+  } else if (vote == 2) {
+    vtc2++;
+  } else if (vote == 3) {
+    vtc3++;
+  } else if (vote == 4) {
+    vnul++;
+  } else if (vote == 5) {
+    veb++;
+  }
+  console.log("=============================");
+  while (true) {
+    var user = String(
+      prompt("Deseja cadastrar um novo voto? [S/N]? ")
+    ).toUpperCase();
+    if (user[0] == "N" || user[0] == "S") {
+      break;
+    } else {
+      console.log(
+        "Você digitou uma opção inválida. Por favor tente novamente!"
+      );
+    }
+  }
+  if (user[0] == "N") {
+    break;
+  }
+}
+console.log(`Houveram ${tf} tentativas de fraude nessa eleição!!!`);
+exibirRes();
