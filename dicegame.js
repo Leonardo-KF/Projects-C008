@@ -38,7 +38,7 @@ while (true) {
   for (let n in jogadores) {
     // sorteador de rodadas do game
     for (let i = 0; i < rounds; i++) {
-      jogadores[n].resultados.push(Math.floor(Math.random() * 7));
+      jogadores[n].resultados.push(Math.floor(Math.random() * 6 + 1));
     }
   }
   for (let i = 0; i < rounds; i++) {
