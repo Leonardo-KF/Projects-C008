@@ -111,8 +111,8 @@ function exibirRes() {
   console.log(`O vencedor da votação foi: ${winner} com ${votes.vwin} votos!`);
 }
 while (true) {
-  console.log(`        Eleição ${now.getFullYear()}`);
-  console.log("=============================");
+  console.log(`         Eleição ${now.getFullYear()}`);
+  console.log("===============================");
   var condition = autorizaVoto(
     parseInt(prompt("Digite o ano do seu nascimento: "))
   );
