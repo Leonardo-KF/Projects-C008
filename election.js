@@ -14,7 +14,11 @@ let winner = ""; // variavel que receberá o vencedor
 function autorizaVoto(anodenasc) {
   while (true) {
     // validação ano de nascimento
-    if (anodenasc % 1 == 0 && now.getFullYear() - anodenasc < 122) {
+    if (
+      anodenasc % 1 == 0 &&
+      now.getFullYear() - anodenasc < 122 &&
+      anodenasc < now.getFullYear()
+    ) {
       break;
     } else {
       console.log(
@@ -23,7 +27,7 @@ function autorizaVoto(anodenasc) {
       console.log(
         "Você está tentando usar dados falsos! Que segundo o artigo 307 do Código Penal é considerado crime de falsa identidade!"
       );
-      console.log("E devido a essas circunstâncias seu voto será negado!");
+      console.log("E devido a essas circunstâncias seu voto será NEGADO!");
       console.log(
         "===================================================================================================="
       );
@@ -41,7 +45,15 @@ function autorizaVoto(anodenasc) {
 }
 function votacao(aut, voto) {
   // função que vão utilizar
-  if (aut == "obrigatório" || aut == "opcional") {
+  if (aut == "negado") {
+    console.log(
+      "================================================================"
+    );
+    console.log("                     Você não pode votar!");
+    console.log(
+      "================================================================"
+    );
+  } else {
     while (true) {
       // validação da opção de voto
       if (voto % 1 == 0) {
@@ -55,10 +67,10 @@ function votacao(aut, voto) {
           if (conf[0] == "S" || conf[0] == "N") {
             break;
           }
-          if (conf[0] == "N") {
-            voto = parseInt(prompt("Digite novamente o seu voto: "));
-            continue;
-          }
+        }
+        if (conf[0] == "N") {
+          voto = parseInt(prompt("Digite novamente o seu voto: "));
+          continue;
         }
         if (voto >= 1 && voto <= 5) {
           // validação da escolha das opções
@@ -74,16 +86,6 @@ function votacao(aut, voto) {
         voto = parseInt(prompt("Digite o seu voto novamente: "));
       }
     }
-  } else {
-    console.log(
-      "================================================================"
-    );
-    console.log(
-      "Você não pode votar! Seu voto não será contabilizado no sistema!"
-    );
-    console.log(
-      "================================================================"
-    );
   }
 }
 
@@ -109,10 +111,15 @@ function exibirRes() {
   console.log(`O vencedor da votação foi: ${winner} com ${votes.vwin} votos!`);
 }
 while (true) {
+  console.log(`        Eleição ${now.getFullYear()}`);
   console.log("=============================");
   var condition = autorizaVoto(
     parseInt(prompt("Digite o ano do seu nascimento: "))
   );
+  if (condition == "negado") {
+    votacao(condition, 0);
+    continue;
+  }
   console.log("=============================");
   console.log("        Urna Tabajara        ");
   console.log("=============================");
