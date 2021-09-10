@@ -51,7 +51,9 @@ if (user[0] == "N") {
     console.log(
       "==============================================================="
     );
-    prompt("Assim que estiver pronto pressione enter para continuarmos! ");
+    prompt(
+      "Assim que estiver pronto pressione a tecla 'ENTER' para continuarmos! "
+    );
     console.log(
       "==============================================================="
     );
