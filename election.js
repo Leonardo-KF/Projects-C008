@@ -98,6 +98,7 @@ function exibirRes() {
   console.log(`O total de votos nulos foi: ${votes.vtnull} votos!`);
   console.log(`O total de votos em branco foi: ${votes.veb} votos!`);
   if (votes.vtc1 > votes.vwin) {
+    // a corrigir, se há algum voto no primeiro ele não contabiliza o restante
     votes.vwin = votes.vtc1;
     winner = "Candidato 1";
   } else if (votes.vtc2 > votes.vwin) {
