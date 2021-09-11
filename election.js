@@ -97,16 +97,17 @@ function exibirRes() {
   );
   console.log(`O total de votos nulos foi: ${votes.vtnull} votos!`);
   console.log(`O total de votos em branco foi: ${votes.veb} votos!`);
-  if (votes.vtc1 > votes.vwin) {
-    // a corrigir, se há algum voto no primeiro ele não contabiliza o restante
-    votes.vwin = votes.vtc1;
-    winner = "Candidato 1";
-  } else if (votes.vtc2 > votes.vwin) {
-    votes.vwin = votes.vtc2;
-    winner = "Candidato 2";
-  } else if (votes.vtc3 > votes.vwin) {
-    votes.vwin = votes.vtc3;
-    winner = "Candidato 3";
+  for (let i = 0; i < 3; i++) {
+    if (votes.vtc1 > votes.vwin) {
+      votes.vwin = votes.vtc1;
+      winner = "Candidato 1";
+    } else if (votes.vtc2 > votes.vwin) {
+      votes.vwin = votes.vtc2;
+      winner = "Candidato 2";
+    } else if (votes.vtc3 > votes.vwin) {
+      votes.vwin = votes.vtc3;
+      winner = "Candidato 3";
+    }
   }
   console.log("=============================================================");
   console.log(`O vencedor da votação foi: ${winner} com ${votes.vwin} votos!`);
