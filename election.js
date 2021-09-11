@@ -121,6 +121,20 @@ function exibirRes() {
     console.log(
       "Não houve um ganhador, pois não houveram votos nos candidatos citados."
     );
+  } else if (
+    votes.vtc1 == votes.vtc2 ||
+    votes.vtc2 == votes.vtc3 ||
+    votes.vtc1 == votes.vtc3
+  ) {
+    console.log(
+      "========================================================================="
+    );
+    console.log(
+      "Houve um empate entre os canditados... Será nescessario um segundo turno!"
+    );
+    console.log(
+      "========================================================================="
+    );
   } else {
     console.log(
       "============================================================="
