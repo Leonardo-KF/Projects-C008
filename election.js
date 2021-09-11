@@ -35,7 +35,10 @@ function autorizaVoto(anodenasc) {
       return "Negado";
     }
   }
-  if (now.getFullYear() - anodenasc >= 18) {
+  if (
+    now.getFullYear() - anodenasc >= 18 &&
+    now.getFullYear() - anodenasc <= 70
+  ) {
     return "Obrigatório";
   } else if (now.getFullYear() - anodenasc >= 16) {
     return "Opcional";
