@@ -32,20 +32,20 @@ function autorizaVoto(anodenasc) {
         "===================================================================================================="
       );
       tf++;
-      return "negado";
+      return "Negado";
     }
   }
   if (now.getFullYear() - anodenasc >= 18) {
-    return "obrigatório";
+    return "Obrigatório";
   } else if (now.getFullYear() - anodenasc >= 16) {
-    return "opcional";
+    return "Opcional";
   } else {
-    return "negado";
+    return "Negado";
   }
 }
 function votacao(aut, voto) {
   // função que vão utilizar
-  if (aut == "negado") {
+  if (aut == "Negado") {
     console.log(
       "================================================================"
     );
@@ -66,6 +66,8 @@ function votacao(aut, voto) {
           ).toUpperCase();
           if (conf[0] == "S" || conf[0] == "N") {
             break;
+          } else {
+            console.log("Você digitou uma opção inválida!");
           }
         }
         if (conf[0] == "N") {
@@ -109,8 +111,21 @@ function exibirRes() {
       winner = "Candidato 3";
     }
   }
-  console.log("=============================================================");
-  console.log(`O vencedor da votação foi: ${winner} com ${votes.vwin} votos!`);
+  if (winner == "") {
+    console.log(
+      "======================================================================"
+    );
+    console.log(
+      "Não houve um ganhador, pois não houveram votos nos candidatos citados."
+    );
+  } else {
+    console.log(
+      "============================================================="
+    );
+    console.log(
+      `O vencedor da votação foi: ${winner} com ${votes.vwin} votos!`
+    );
+  }
 }
 while (true) {
   console.log(`         Eleição ${now.getFullYear()}`);
@@ -118,7 +133,7 @@ while (true) {
   var condition = autorizaVoto(
     parseInt(prompt("Digite o ano do seu nascimento: "))
   );
-  if (condition == "negado") {
+  if (condition == "Negado") {
     votacao(condition, 0);
     continue;
   }
@@ -131,6 +146,7 @@ while (true) {
   console.log("[4] - Voto Nulo");
   console.log("[5] - Voto em Branco");
   console.log("=============================");
+  console.log("A condição do seu voto é: " + condition);
   var vote = votacao(condition, prompt("Digite o seu voto: "));
   if (vote == 1) {
     votes.vtc1++;
