@@ -96,11 +96,9 @@ if (player.sexo[0].toUpperCase() == "M") {
 } else {
   player.pronome = "Sr.ª";
 }
-let dia = 1;
 async function main() {
   while (true) {
     console.clear();
-    console.log(`Dia ${dia} de outubro de 2051`);
     console.log(
       "O relógio desperta e você nota que dormiu na frente do seu computador, ele esta com a tela azul mas sem nenhuma informação aparente...\nVocê não lembra nada sobre o dia anterior, o que é muito estranho, mas você se encontra atrasado para o trabalho..."
     );
@@ -118,6 +116,7 @@ async function main() {
         "Você tomou um café para acordar e decidiu ir ao trabalho correndo."
       );
     } else if (choice1 == 3) {
+      // finalizado segue o bloco do while normalmente
       console.log(
         "Você acordou duas horas depois seu computador segue com a tela azul, porém vê que há uma mensagem no centro da tela!"
       );
@@ -126,7 +125,13 @@ async function main() {
       );
       console.log("Na tela esta a seguinte mensagem:");
       console.log(`Olá ${player.pronome} ${player.nome}!`);
-      // continuação da história para a decisão correta
+      console.log(
+        "Você sem entender nada, tenta alguns comandos, como alt+F4, ctrl+alt+Del... E nada acontece..."
+      );
+      console.log(
+        "A tela pisca em branco e volta com a seguinte mensagem, novamente em um fundo azul..."
+      );
+      console.log("Siga o Lobo branco");
     }
     console.log(
       "Você chegou no trabalho e tomou uma bronca do seu chefe por chegar frequentemente atrasado..."
@@ -160,6 +165,7 @@ async function main() {
       await sleep(1250);
       console.clear();
       if (choice3 == 1) {
+        // finalizado segue o bloco do while normalmente
         console.log(
           "Você conseguiu fugir dos guardas, mas com certeza alguém do seu trabalho passou informações relacionadas ao seu endereço..."
         );
@@ -172,9 +178,16 @@ async function main() {
         console.log(
           "Voltando pra casa, derrepente seu celular toca, é uma ligação de um número desconhecido."
         );
-        let choice4 = authChoices(parseInt(prompt("Digite a sua escolha: ")));
-        await sleep(1250);
+        console.log(
+          "Você atende, é aquela mesma voz desconhecida, ela fala o seguinte..."
+        );
+        console.log("Siga o lobo Branco");
+        console.log(
+          "E antes de você ter tempo de falar qualquer coisa a chamada é encerrada!"
+        );
+        await sleep(7250);
       } else if (choice3 == 2) {
+        // finaliza e reinicia
         console.log("Levaram você até a delegacia algemado...");
         console.log(
           "Você esta sentado na sala de interrogatório pensando no que pode ter acontecido e no que você pode ter feito."
@@ -196,6 +209,26 @@ async function main() {
         );
         console.log("Quando você tenta falar algo...");
         await sleep(20000);
+        continue;
+      } else {
+        console.log(
+          "Os guardas viram você correndo e ja estão batendo na porta do banheiro..."
+        );
+        console.log(
+          "Você olha para o lado e ve uma janela, então decide sair por ela, você consegue passar e em seguida houve o barulho da porta sendo arrombada..."
+        );
+        console.log(
+          "Então você sai correndo dali, ainda sem entender o que está acontecendo..."
+        );
+        await sleep(1000);
+        console.log(
+          "Seu telefone toca novamente, você atende! É aquela voz misteriosa novamente ela fala o seguinte"
+        );
+        console.log(
+          `Parabéns ${player.nome} você se saiu bem... Se quer explicações sobre tudo isso, siga o lobo branco`
+        );
+        console.log("E a chamada é encerrada");
+        await sleep(2000);
       }
     } else {
       console.log(
@@ -205,12 +238,40 @@ async function main() {
         "Você vai direto até ele e se depara com a seguinte mensagem: "
       );
       console.log(`Sábia escolha ${player.pronome} ${player.nome}!`);
+      console.log(
+        "A tela pisca em branco e volta com uma nova mensagem dizendo o seguinte..."
+      );
+      console.log(
+        `Estão atrás de você ${player.nome}, saia de casa o mais rapido possivel.`
+      );
+      console.log("E o computador se desliga...");
+      console.log("[1] - Sair de casa");
+      console.log("[2] - Ficar em casa e esperar pra ver o que vai acontecer");
+      console.log("[3] - Ligar para a policia");
+      let choice4 = authChoices(parseInt(prompt("Digite a sua escolha: ")));
+      await sleep(1250);
+      console.clear();
+      if (choice4 == 1) {
+        console.log(
+          "Você acabou de sair de casa e seu telefone toca e você atende..."
+        );
+        console.log(
+          `Uma voz misteriosa fala: Olá ${player.nome}, você fez excelentes escolhas até aqui, se deseja obter resspostas...`
+        );
+        console.log("Siga o lobo branco");
+        console.log(
+          "Antes que você possa falar qualquer coisa a chamada foi encerrada."
+        );
+        await sleep(2000);
+      } else {
+        console.log("Você houve batidas na porta da sua casa...");
+        console.log("Você vai abrir a porta ");
+      }
     }
 
     // if ((escolha = 1)) {
     //   break;
     // }
-    dia++;
   }
 }
 main();
